@@ -41,20 +41,62 @@ function loadNextImage() {
     letterBoxes.appendChild(box);
   }
 
+  // Create the keyboard
+  createKeyboard();
+
   // Capture user input via keyboard
   document.addEventListener("keydown", handleKeyPress);
 }
 
-function handleKeyPress(event) {
-  const letterBoxes = document.getElementById("letter-boxes").children;
+// Create an on-screen keyboard with letters A-Z
+function createKeyboard() {
+  const keyboardContainer = document.getElementById("keyboard");
+  keyboardContainer.innerHTML = "";
 
+  for (let i = 0; i < 26; i++) {
+    const letter = String.fromCharCode(97 + i).toUpperCase(); // 'A' to 'Z'
+    const key = document.createElement("div");
+    key.classList.add("key");
+    key.textContent = letter;
+    key.addEventListener("click", () =>
+      handleVirtualKeyPress(letter.toLowerCase())
+    );
+    keyboardContainer.appendChild(key);
+  }
+
+  // Add delete button functionality
+  document.getElementById("delete").addEventListener("click", handleDelete);
+}
+
+// Handle virtual keypress from the on-screen keyboard
+function handleVirtualKeyPress(letter) {
   if (currentPosition < currentWord.length) {
-    const keyPressed = event.key.toLowerCase();
-    if (/^[a-z]$/.test(keyPressed)) {
-      userTypedWord[currentPosition] = keyPressed;
-      letterBoxes[currentPosition].textContent = keyPressed;
-      currentPosition++;
-    }
+    insertLetter(letter);
+  }
+}
+
+// Handle physical keypress (only accept letters)
+function handleKeyPress(event) {
+  const keyPressed = event.key.toLowerCase();
+  if (/^[a-z]$/.test(keyPressed) && currentPosition < currentWord.length) {
+    insertLetter(keyPressed);
+  }
+}
+
+function insertLetter(letter) {
+  const letterBoxes = document.getElementById("letter-boxes").children;
+  userTypedWord[currentPosition] = letter;
+  letterBoxes[currentPosition].textContent = letter;
+  currentPosition++;
+}
+
+// Handle the delete button (undo the last letter typed)
+function handleDelete() {
+  if (currentPosition > 0) {
+    currentPosition--;
+    userTypedWord.pop();
+    const letterBoxes = document.getElementById("letter-boxes").children;
+    letterBoxes[currentPosition].textContent = "";
   }
 }
 
