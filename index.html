@@ -8,43 +8,47 @@
   </head>
   <body>
     <div class="game-container">
-      <h1>Guess the Image</h1>
-
-      <!-- Image Display -->
-      <div id="image-container">
-        <img id="image" src="" alt="Guess the word" />
-      </div>
-
-      <!-- Letter Boxes (User will type to fill these) -->
-      <div id="letter-boxes"></div>
-
-      <!-- On-Screen Keyboard -->
-      <div id="keyboard-container">
-        <div id="keyboard">
-          <!-- Letters A to Z will be dynamically added here -->
+      <!-- Left Part: Image, Letter Boxes, and Score -->
+      <div class="left-side">
+        <!-- Score Display -->
+        <div id="score-container">
+          <p>Score: <span id="score">0</span></p>
         </div>
-        <button id="delete">Delete</button>
+
+        <!-- Image Display -->
+        <div id="image-container">
+          <img id="image" src="" alt="Guess the word" />
+        </div>
+
+        <!-- Letter Boxes (User will type to fill these) -->
+        <div id="letter-boxes"></div>
       </div>
 
-      <!-- Buttons -->
-      <div id="controls">
-        <button id="submit">Submit</button>
-        <button id="skip">Skip</button>
+      <!-- Right Part: Keyboard and Buttons -->
+      <div class="right-side">
+        <!-- On-Screen Keyboard -->
+        <div id="keyboard-container">
+          <div id="keyboard">
+            <!-- Letters A to Z will be dynamically added here -->
+          </div>
+          <button id="delete">Delete</button>
+        </div>
+
+        <!-- Control Buttons -->
+        <div id="controls">
+          <button id="submit">Submit</button>
+          <button id="skip">Skip</button>
+        </div>
       </div>
-
-      <!-- Score -->
-      <div id="score-container">
-        <p>Score: <span id="score">0</span></p>
-      </div>
-
-      <!-- Feedback -->
-      <div id="feedback"></div>
-
-      <!-- Hidden Audio for Correct/Wrong Answer -->
-      <audio id="correct-sound" src="sounds/correct.mp3"></audio>
-      <audio id="wrong-sound" src="sounds/wrong.mp3"></audio>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Feedback -->
+    <div id="feedback"></div>
+
+    <!-- Hidden Audio for Correct/Wrong Answer -->
+    <audio id="correct-sound" src="sounds/correct.mp3"></audio>
+    <audio id="wrong-sound" src="sounds/wrong.mp3"></audio>
+
+    <script src="script.js?t=1"></script>
   </body>
 </html>

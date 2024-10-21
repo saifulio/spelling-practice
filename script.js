@@ -54,7 +54,7 @@ function createKeyboard() {
   keyboardContainer.innerHTML = "";
 
   for (let i = 0; i < 26; i++) {
-    const letter = String.fromCharCode(97 + i).toUpperCase(); // 'A' to 'Z'
+    const letter = String.fromCharCode(97 + i).toLowerCase(); // 'A' to 'Z'
     const key = document.createElement("div");
     key.classList.add("key");
     key.textContent = letter;
