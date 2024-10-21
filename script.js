@@ -2,6 +2,8 @@ let currentWord = "";
 let currentIndex = 0;
 let score = 0;
 let gameData = [];
+let userTypedWord = [];
+let currentPosition = 0;
 
 // Load the JSON data
 fetch("data.json")
@@ -20,18 +22,18 @@ function loadNextImage() {
   const currentImageData = gameData[currentIndex];
   const imageElement = document.getElementById("image");
   const letterBoxes = document.getElementById("letter-boxes");
-  const userInput = document.getElementById("user-input");
   const feedback = document.getElementById("feedback");
 
   currentWord = currentImageData.name;
   imageElement.src = "images/" + currentImageData.image;
 
-  // Clear previous boxes
+  // Reset values
   letterBoxes.innerHTML = "";
-  userInput.value = "";
   feedback.innerHTML = "";
+  userTypedWord = [];
+  currentPosition = 0;
 
-  // Create boxes for letters
+  // Create boxes for each letter
   for (let i = 0; i < currentWord.length; i++) {
     const box = document.createElement("div");
     box.classList.add("letter-box");
@@ -39,18 +41,26 @@ function loadNextImage() {
     letterBoxes.appendChild(box);
   }
 
-  document.querySelectorAll(".letter-box").forEach((box) => {
-    box.addEventListener("click", function () {
-      const index = this.dataset.index;
-      userInput.value += currentWord[index];
-      this.textContent = currentWord[index];
-    });
-  });
+  // Capture user input via keyboard
+  document.addEventListener("keydown", handleKeyPress);
+}
+
+function handleKeyPress(event) {
+  const letterBoxes = document.getElementById("letter-boxes").children;
+
+  if (currentPosition < currentWord.length) {
+    const keyPressed = event.key.toLowerCase();
+    if (/^[a-z]$/.test(keyPressed)) {
+      userTypedWord[currentPosition] = keyPressed;
+      letterBoxes[currentPosition].textContent = keyPressed;
+      currentPosition++;
+    }
+  }
 }
 
 // Handle Submit
 document.getElementById("submit").addEventListener("click", function () {
-  const userInput = document.getElementById("user-input").value;
+  const userInput = userTypedWord.join("");
 
   if (userInput.toLowerCase() === currentWord.toLowerCase()) {
     score++;
@@ -65,6 +75,7 @@ document.getElementById("submit").addEventListener("click", function () {
   // Move to next image after delay
   setTimeout(() => {
     currentIndex++;
+    document.removeEventListener("keydown", handleKeyPress);
     loadNextImage();
   }, 2000);
 });
@@ -72,6 +83,7 @@ document.getElementById("submit").addEventListener("click", function () {
 // Handle Skip
 document.getElementById("skip").addEventListener("click", function () {
   currentIndex++;
+  document.removeEventListener("keydown", handleKeyPress);
   loadNextImage();
 });
 
