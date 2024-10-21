@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kids Word Guessing Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <h1>Guess the Image</h1>
+
+      <!-- Image Display -->
+      <div id="image-container">
+        <img id="image" src="" alt="Guess the word" />
+      </div>
+
+      <!-- Letter Boxes -->
+      <div id="letter-boxes"></div>
+
+      <!-- Input for user's guess -->
+      <div id="input-container">
+        <input
+          type="text"
+          id="user-input"
+          placeholder="Enter the name"
+          readonly
+        />
+      </div>
+
+      <!-- Buttons -->
+      <div id="controls">
+        <button id="submit">Submit</button>
+        <button id="skip">Skip</button>
+      </div>
+
+      <!-- Score -->
+      <div id="score-container">
+        <p>Score: <span id="score">0</span></p>
+      </div>
+
+      <!-- Feedback -->
+      <div id="feedback"></div>
+
+      <!-- Hidden Audio for Correct/Wrong Answer -->
+      <audio id="correct-sound" src="sounds/correct.mp3"></audio>
+      <audio id="wrong-sound" src="sounds/wrong.mp3"></audio>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
