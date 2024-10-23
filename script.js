@@ -6,7 +6,7 @@ let userTypedWord = [];
 let currentPosition = 0;
 
 // Load the JSON data
-fetch("data.json")
+fetch("data.json?t=6")
   .then((response) => response.json())
   .then((data) => {
     gameData = data;

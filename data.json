@@ -6,5 +6,69 @@
   {
     "image": "banana.webp",
     "name": "banana"
+  },
+  {
+    "image": "jackfruit.jpg",
+    "name": "jackfruit"
+  },
+  {
+    "image": "avocado.jpeg",
+    "name": "avocado"
+  },
+  {
+    "image": "blackberry.jpg",
+    "name": "blackberry"
+  },
+  {
+    "image": "blueberry.jpeg",
+    "name": "blueberry"
+  },
+  {
+    "image": "cherry.jpeg",
+    "name": "cherry"
+  },
+  {
+    "image": "coconut.webp",
+    "name": "coconut"
+  },
+  {
+    "image": "grape.jpg",
+    "name": "grape"
+  },
+  {
+    "image": "guava.jpg",
+    "name": "guava"
+  },
+  {
+    "image": "litchi.jpg",
+    "name": "litchi"
+  },
+  {
+    "image": "mango.jpg",
+    "name": "mango"
+  },
+  {
+    "image": "orange.jpg",
+    "name": "orange"
+  },
+  {
+    "image": "papaya.jpg",
+    "name": "papaya"
+  },
+  {
+    "image": "pineapple.jpeg",
+    "name": "pineapple"
+  },
+  {
+    "image": "raspberry.jpg",
+    "name": "raspberry"
+  },
+  {
+    "image": "strawberry.jpeg",
+    "name": "strawberry"
+  },
+  {
+    "image": "sugarcane.jpeg",
+    "name": "sugarcane"
   }
 ]
