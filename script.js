@@ -100,9 +100,13 @@ function handleDelete() {
   }
 }
 
+let submitClicked = false;
 // Handle Submit
 document.getElementById("submit").addEventListener("click", function () {
+  if (submitClicked) return;
   const userInput = userTypedWord.join("");
+
+  submitClicked = true;
 
   if (userInput.toLowerCase() === currentWord.toLowerCase()) {
     score++;
@@ -119,6 +123,7 @@ document.getElementById("submit").addEventListener("click", function () {
     currentIndex++;
     document.removeEventListener("keydown", handleKeyPress);
     loadNextImage();
+    submitClicked = false;
   }, 2000);
 });
 
